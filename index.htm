@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitacora</title>
+    <link rel="stylesheet" href="estilos.css">
+
+    <!-- Librería model-viewer -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+
+    <!-- Firebase compat -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+</head>
+
+<body>
+    <section class="portada">
+        <header class="barra">
+            <div class="cont-logo">
+                <img src="imagenes/logo-BioArka.png" alt="Logo BioArka">
+                <span>BioArka</span>
+            </div>
+        </header>
+        <div class="portada-contenido">
+            <h1>Nuevas especies se preparan para salir al mundo</h1>
+            <p>Conocelos antes del festival Tekové Porã</p>
+        </div>
+    </section>
+
+    <section class="hibridos">
+        <div class="cont-info">
+            <h2>Hibridos de este año</h2>
+            <p>Estas son los bichis, que serán liberados en el festival anual Tecore Pora de este ciclo. Cada una
+                fue creada genéticamente para mantener un equilibrio distinto: el agua, el suelo o el aire. En
+                ellas se une el conocimiento científico con la sensibilidad de la vida</p>
+        </div>
+        <div class="cont-cards" id="carrusel">
+            <a href="agunarahu.html" class="card"><img src="imagenes/agunarahu.png" alt="">
+                <h5>Agunarahu</h5>
+            </a>
+            <a href="mbopihãra.html" class="card"><img src="imagenes/mmbopihãra.png" alt="">
+                <h5>Mbopihãra</h5>
+            </a>
+            <a href="tapimbyra.html" class="card"><img src="imagenes/tapimbyra.png" alt="">
+                <h5>Tapimbyra</h5>
+            </a>
+            <a href="guaragua-y.html" class="card"><img src="imagenes/guaragua-y.png" alt="">
+                <h5>Guaragua'y</h5>
+            </a>
+            <a href="yvypara.html" class="card"><img src="imagenes/yvypara.png" alt="">
+                <h5>Yvypara</h5>
+            </a>
+            <a href="urutaúra.html" class="card"><img src="imagenes/urutaúra.png" alt="">
+                <h5>Urutaúra</h5>
+            </a>
+            <a href="karuata.html" class="card"><img src="imagenes/karuata.png" alt="">
+                <h5>Karuata</h5>
+            </a>
+            <a href="pora-say.html" class="card"><img src="imagenes/pora-say.png" alt="">
+                <h5>Pora Sa'y</h5>
+            </a>
+        </div>
+
+        <div class="invesitgacion cont-info">
+            <h2>Investigaciones</h2>
+            <p>Detrás de cada liberación hay años de observación, prueba y aprendizaje.<br>Esta sección reúne los
+                estudios que acompañan el desarrollo genético, ambiental y ético
+                de las especies. Ciencia y campo, en el diálogo constante.
+            </p>
+        </div>
+    </section>
+
+    <section class="vocesCientificas">
+        <h2>Voces científicas: creciendo con cada hallazgo</h2>
+        <p>Registro abierto en lo que los investigadores documentan los 180 días de seguimiento...</p>
+
+        <!-- Tabs principales -->
+        <div class="tabs">
+            <button id="tab-destacados" class="active">Hallazgos</button>
+            <button id="tab-todos">Proceso</button>
+        </div>
+
+        <!-- Contenedores -->
+        <div id="comentarios-destacados" class="comentarios-container"></div>
+
+        <div id="comentarios-todos" class="comentarios-container" style="display:none;"></div>
+
+        <!-- Sub-tabs dinámicas (solo para "Proceso") -->
+        <div id="subtabs-container" class="subtabs"></div>
+    </section>
+
+    <script src="comentarios.js"></script>
+    <script src="carrusel.js"></script>
+</body>
+
+</html>

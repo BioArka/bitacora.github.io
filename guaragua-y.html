@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guaragua'y - BioArka</title>
+    <link rel="stylesheet" href="estiloAnimal.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <main class="ficha">
+        <!-- LADO IZQUIERDO -->
+        <section class="lado-izq">
+            <model-viewer id="visor3D" src="modelos/guaragua-y.gltf" alt="Modelo 3D Agunarahu" camera-controls
+                auto-rotate shadow-intensity="1">
+            </model-viewer>
+
+            <button id="btnSonido" class="icono-sonido"><img src="imagenes/icon-sonido.png" alt=""></button>
+        </section>
+
+        <!-- LADO DERECHO -->
+        <section class="lado-der">
+           <button class="cerrar"><a href="index.htm"><img src="imagenes/icon-close.png" alt=""></a></button></button>
+
+            <div class="info-caja">
+                <h2>Guaragua'y</h2>
+                <ul>
+                    <li> <img src="imagenes/hibridoAcuatico.png" alt="">Hibrido Acuatico.</li>
+                    <li> <img src="imagenes/hibridoCombinacion.png" alt="">Combinación genética de pato y foca.</li>
+                    <li> <img src="imagenes/hibridoDieta.png" alt="">Dieta: peces pequeños, moluscos y algas.</li>
+                    <li> <img src="imagenes/hibridoFuncion.png" alt="">Oxigena hábitats acuáticos y activa nutrientes</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- SONIDO -->
+    <script>
+        const sonido = new Audio("sonido/guaragua-y.mp3");
+        document.getElementById("btnSonido").addEventListener("click", () => {
+            sonido.currentTime = 0;
+            sonido.play();
+        });
+    </script>
+    <script src="3d.js"></script>
+</body>
+
+</html>

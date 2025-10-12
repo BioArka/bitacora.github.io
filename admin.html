@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel BioArka</title>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 20px;
+      color: #013C49;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form label {
+      font-weight: bold;
+    }
+
+    form input, form select, form textarea, form button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    form button {
+      background-color: #013C49;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #026c85;
+    }
+
+    #lista-comentarios-admin {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    #lista-comentarios-admin div {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #lista-comentarios-admin button {
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+    }
+
+    #lista-comentarios-admin button:hover {
+      background-color: #c0392b;
+    }
+    /* Responsive */
+    @media (max-width: 640px) {
+      form {
+        padding: 15px;
+      }
+
+      form input, form select, form textarea, form button {
+        font-size: 0.95rem;
+      }
+
+      #lista-comentarios-admin div {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      #lista-comentarios-admin button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Publicar nuevo comentario</h2>
+  <form id="form-comentario">
+    <label for="autor">Autor:</label>
+    <select id="autor" required>
+      <option value="Dr Gaona - Genetista">Dr Gaona - Genetista</option>
+      <option value="Dra Iturbe - Zoologa">Dra Iturbe - Zoologa</option>
+    </select>
+
+    <label for="contenido">Contenido:</label>
+    <textarea id="contenido" placeholder="Escribe tu comentario..." required></textarea>
+
+    <label for="meGusta">Me gusta:</label>
+    <input type="number" id="meGusta" value="0" required>
+
+    <label for="categoria">Categoría:</label>
+    <select id="categoria">
+      <option value="normal">Normal</option>
+      <option value="destacado">Destacado</option>
+    </select>
+
+    <button type="submit">Publicar</button>
+  </form>
+
+  <h2>Eliminar comentarios</h2>
+  <div id="lista-comentarios-admin"></div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "bioarka-comentarios.firebaseapp.com",
+      projectId: "bioarka-comentarios",
+      storageBucket: "bioarka-comentarios.firebasestorage.app",
+      messagingSenderId: "1026741057709",
+      appId: "1:1026741057709:web:d3ad7deedd9c0399c12e24"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const form = document.getElementById("form-comentario");
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      const autor = form.autor.value;
+      const contenido = form.contenido.value;
+      const meGusta = parseInt(form.meGusta.value) || 0;
+      const categoria = form.categoria.value;
+      const imagen = autor === "Dr Gaona - Genetista" ? "imagenes/imagen1.png" : "imagenes/imagen2.png";
+
+      try {
+        await db.collection("comentarios").add({
+          autor, contenido, meGusta, categoria, imagen,
+          fecha: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        alert("Comentario publicado!");
+        form.reset();
+      } catch (err) {
+        alert("Error al guardar: " + err.message);
+      }
+    });
+
+    const contAdmin = document.getElementById("lista-comentarios-admin");
+    db.collection("comentarios").orderBy("fecha", "desc")
+      .onSnapshot(snapshot => {
+        contAdmin.innerHTML = "";
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          const div = document.createElement("div");
+          div.innerHTML = `
+            <div>
+              <div><strong>${data.autor}</strong>: ${data.contenido}</div>
+              <button onclick="eliminar('${doc.id}')">Eliminar</button>
+            </div>
+          `;
+          contAdmin.appendChild(div);
+        });
+      });
+
+    function eliminar(id) {
+      if (confirm("¿Seguro que querés eliminar este comentario?")) {
+        db.collection("comentarios").doc(id).delete();
+      }
+    }
+  </script>
+</body>
+</html>

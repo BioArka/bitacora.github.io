@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@600&display=swap');
+@import url('https://fonts.cdnfonts.com/css/acumin-variable-concept');
+
+/* ---------- RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Acumin Variable Concept', sans-serif;
+  background: #fff;
+  color: #013C49;
+  overflow-x: hidden;
+}
+
+/* ---------- PORTADA ---------- */
+.portada {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: url('imagenes/fondo-portada.png') no-repeat center top / cover;
+  z-index: 0;
+}
+
+/* Barra superior */
+.barra {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  z-index: 2;
+}
+
+.cont-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cont-logo img {
+  width: 40px;
+  height: auto;
+}
+
+.cont-logo span {
+  font-family: 'Acumin Variable Concept', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #013C49;
+}
+
+/* Contenido de portada */
+.portada-contenido {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.portada-contenido h1 {
+  font-family: 'MuseoModerno', cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #013C49;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.portada-contenido p {
+  display: inline-block;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 12px 20px;
+  color: black;
+  border-radius: 8px;
+}
+
+/* ---------- SECCIONES GENERALES ---------- */
+section:not(.portada) {
+  text-align: left;
+}
+
+/* ---------- HÍBRIDOS ---------- */
+.hibridos {
+  background-color: #7FC1EB;
+  padding: 60px 80px;
+}
+
+.hibridos h2 {
+  font-family: 'MuseoModerno', cursive;
+  font-size: 2rem;
+  color: #013C49;
+  margin-bottom: 10px;
+}
+
+.cont-info p {
+  font-size: 1.3rem;
+  color: black;
+  margin-bottom: 20px;
+  font-weight: 200;
+  line-height: 1.6;
+}
+
+/* Carrusel de cards */
+.cont-cards {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.card {
+  flex: 0 0 21%;
+  min-width: 160px;
+  background: #013C49;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  user-select: none;
+  pointer-events: none;
+  /* no tapa los clicks */
+}
+
+a img {
+  user-select: none;
+  pointer-events: none;
+  /* no tapa los clicks */
+
+}
+
+.card h5 {
+  padding: 10px 0;
+  font-size: 1.1rem;
+  font-family: 'Acumin Variable Concept', sans-serif;
+  font-weight: 600;
+  color: white;
+  user-select: none;
+  pointer-events: none;
+  /* no tapa los clicks */
+}
+
+/* Quita la línea y el color por defecto de los enlaces dentro de las cards */
+.cont-cards a {
+  text-decoration: none;
+  /* elimina la línea */
+  color: inherit;
+  /* toma el color del texto padre, o poné el que quieras */
+}
+
+/* ---------- INVESTIGACIÓN ---------- */
+.invesitgacion {
+  margin-top: 60px;
+}
+
+/* ---------- VOCES CIENTÍFICAS ---------- */
+.vocesCientificas {
+  background-color: #fff;
+  padding: 60px 80px;
+}
+
+.vocesCientificas h2 {
+  font-family: 'MuseoModerno', cursive;
+  font-size: 2rem;
+  color: #013C49;
+  margin-bottom: 15px;
+}
+
+.vocesCientificas p {
+  font-size: 1.3rem;
+  color: black;
+  font-weight: 200;
+  line-height: 1.6;
+}
+
+/* ---------- NUEVO ESTILO DE TABS ---------- */
+.tabs {
+  display: flex;
+  gap: 30px;
+  border-bottom: 2px solid #e0e0e0;
+  margin-top: 40px;
+  margin-bottom: 25px;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #013C49;
+  padding-bottom: 8px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.tabs button:hover {
+  color: #007EA7;
+}
+
+.tabs button.active {
+  color: #013C49;
+}
+
+.tabs button.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 3px;
+  background-color: #013C49;
+  border-radius: 2px;
+}
+
+/* ---------- ESTILO DE COMENTARIOS (tipo tarjetas LinkedIn) ---------- */
+.comentarios-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.comentario {
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  /* Separación entre comentarios */
+  border-bottom: 1px solid #ccc; /* línea gris clara */
+  margin-bottom: 15px;
+}
+
+.comentario img.img-autor {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comentario .contenido h4 {
+  font-weight: 700;
+  color: #013C49;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.comentario .contenido p {
+  color: #333;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.comentario .contenido p:last-child {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 8px;
+}
+
+.comentario .contenido img {
+  vertical-align: middle;
+}
+
+.header-comentario {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.header-comentario h4 {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #013C49;
+  margin-bottom: 2px;
+}
+
+.header-comentario .fecha {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.fijado {
+  font-weight: 500;
+  color: #013C49;
+  margin-left: 6px;
+  font-size: 0.95rem;
+}
+
+.footer-comentario {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.footer-comentario img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.subtabs {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  gap: 30px;
+  margin-top: 40px;
+  margin-bottom: 25px;
+  background: none;
+
+}
+
+.subtabs button {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: rgba(1, 60, 73, 0.5); /* Color opaco para inactivos */
+  padding-bottom: 2px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Pestaña activa */
+.subtabs button.active {
+  color: #013C49; /* Color más fuerte */
+  background: none;
+
+}
+
+.subtabs button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; /* Justo sobre el border-bottom del contenedor */
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #013C49; /* Rayita debajo */
+  border-radius: 2px;
+}
+
+.subtabs button:hover {
+  background: #007EA7;
+  color: #fff;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+
+  .hibridos,
+  .vocesCientificas {
+    padding: 40px 20px;
+  }
+
+  .portada-contenido h1 {
+    font-size: 2.2rem;
+  }
+
+  .portada-contenido p {
+    font-size: 1.1rem;
+  }
+
+  .card {
+    flex: 0 0 45%;
+  }
+}

@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Acumin Variable Concept', sans-serif;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.ficha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100vh;
+  border-radius: 0;
+  overflow: hidden;
+  background-color: #0b4c60;
+}
+
+/* LADO IZQUIERDO */
+.lado-izq {
+  position: relative;
+  background: url("imagenes/fondo-animal.png") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+}
+
+.icono-sonido {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(3px);
+}
+
+
+/* LADO DERECHO */
+.lado-der {
+  background-color: #2B5D73;
+  color: white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cerrar {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: rgba(255, 255, 255, 0.348);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(3px);
+}
+
+
+/* CUADRO DE INFORMACIÓN */
+.info-caja {
+  padding: 40px 50px;
+  border-radius: 14px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.info-caja h2 {
+  font-family: 'MuseoModerno', sans-serif;
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.info-caja ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-caja li {
+  font-size: 1.15rem;
+  margin: 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+
+.info-caja ul li img {
+  width: 1.3em;   /* un poco más grande que la letra */
+  height: 1.3em;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+/* ÍCONOS (IMÁGENES DENTRO DEL BOTÓN) */
+.icono-sonido img{
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.cerrar img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* POSICIÓN DE CADA BOTÓN */
+.icono-sonido {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.cerrar {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+}
+
+/* EFECTO HOVER */
+.icono-sonido:hover,
+.cerrar:hover {
+  transform: scale(1.15);
+}
+
+/* ----------------- RESPONSIVE ----------------- */
+@media (max-width: 768px) {
+  .ficha {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lado-izq {
+    height: 60vh;
+    width: 100%;
+  }
+
+  .lado-der {
+    height: 40vh;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .info-caja {
+    width: 100%;
+    max-width: none;
+    padding: 25px 20px;
+  }
+
+  .info-caja h2 {
+    font-size: 1.8rem;
+    text-align: left;
+  }
+
+  .info-caja li {
+    font-size: 1rem;
+  }
+
+  .icono-sonido {
+    bottom: 20px;
+    top: auto;
+    left: 20px;
+  }
+
+  /* Botón cerrar fijo en la esquina superior derecha */
+  .cerrar {
+    position: fixed; /* fijo en la pantalla */
+    top: 15px;
+    right: 15px;
+    z-index: 999; /* para que quede arriba de todo */
+  }
+
+  model-viewer {
+    height: 100%;
+    width: 100%;
+  }
+}
