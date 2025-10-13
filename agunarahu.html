@@ -13,9 +13,33 @@
     <main class="ficha">
         <!-- LADO IZQUIERDO -->
         <section class="lado-izq">
-            <model-viewer id="visor3D" src="modelos/agunarahu.gltf" alt="Modelo 3D Agunarahu" camera-controls
-                auto-rotate shadow-intensity="1"disable-zoom>
+
+            <div id="loader">
+                <img src="imagenes/cargando2.svg" alt="Cargando..." />
+            </div>
+            <model-viewer id="modelo" src="modelos/agunarahu.gltf" alt="Modelo 3D Agunarahu" camera-controls
+                auto-rotate shadow-intensity="1" disable-zoom>
             </model-viewer>
+
+            <script>
+                const modelo = document.getElementById("modelo");
+                const loader = document.getElementById("loader");
+
+                modelo.addEventListener("load", () => {
+                    loader.style.display = "none";
+                });
+            </script>
+
+            <style>         /* PARA QUE EL CARGANDO SALGA EN EL MEDIO*/
+                #loader {
+                    position:absolute;
+                    inset: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            </style>
+
 
             <button id="btnSonido" class="icono-sonido"><img src="imagenes/icon-sonido.png" alt=""></button>
         </section>
@@ -44,9 +68,6 @@
             sonido.play();
         });
     </script>
-    <script src="3d.js"></script>
 </body>
 
-
 </html>
-

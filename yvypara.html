@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yvypara - BioArka</title>
-    <link rel="icon" type="image/png" href="imagenes/logo-BioArka.png">
     <link rel="stylesheet" href="estiloAnimal.css">
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
 </head>
@@ -14,9 +13,32 @@
     <main class="ficha">
         <!-- LADO IZQUIERDO -->
         <section class="lado-izq">
-            <model-viewer id="visor3D" src="modelos/yvypara.gltf" alt="Modelo 3D Agunarahu" camera-controls
+            <div id="loader">
+                <img src="imagenes/cargando2.svg" alt="Cargando..." />
+            </div>
+            <model-viewer id="modelo" src="modelos/yvypara.gltf" alt="Modelo 3D Yvypara" camera-controls
                 auto-rotate shadow-intensity="1" disable-zoom>
             </model-viewer>
+
+            <script>
+                const modelo = document.getElementById("modelo");
+                const loader = document.getElementById("loader");
+
+                modelo.addEventListener("load", () => {
+                    loader.style.display = "none";
+                });
+            </script>
+
+            <style>         /* PARA QUE EL CARGANDO SALGA EN EL MEDIO*/
+                #loader {
+                    position:absolute;
+                    inset: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            </style>
+
 
             <button id="btnSonido" class="icono-sonido"><img src="imagenes/icon-sonido.png" alt=""></button>
         </section>
