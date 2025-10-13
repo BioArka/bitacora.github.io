@@ -368,6 +368,47 @@ a img {
   color: #fff;
 }
 
+/* ---------- FOOTER ---------- */
+.footer {
+  background-color: #013C49;
+  color: #ffffff;
+  text-align: center;
+  padding: 40px 20px;
+  font-family: 'Acumin Variable Concept', sans-serif;
+}
+
+.footer-logo-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* espacio entre logo y texto */
+  margin-bottom: 8px;
+}
+
+.footer-logo {
+  width: 28px;
+  height: auto;
+}
+
+.footer h3 {
+  font-family: 'MuseoModerno', cursive;
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+.footer p {
+  font-size: 1rem;
+  color: #d0d0d0;
+  margin-bottom: 18px;
+}
+
+.footer span {
+  font-size: 0.9rem;
+  color: #b0b0b0;
+}
+
+
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
 
