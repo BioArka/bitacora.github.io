@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mbopihãra - BioArka</title>
+    <link rel="stylesheet" href="estiloAnimal.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <main class="ficha">
+        <!-- LADO IZQUIERDO -->
+        <section class="lado-izq">
+            <div id="loader">
+                <img src="imagenes/cargando2.svg" alt="Cargando..." />
+            </div>
+            <model-viewer id="modelo" src="modelos/3.gltf" alt="Modelo 3D Mbopihãra" camera-controls
+                auto-rotate shadow-intensity="1" disable-zoom>
+            </model-viewer>
+
+            <script>
+                const modelo = document.getElementById("modelo");
+                const loader = document.getElementById("loader");
+
+                modelo.addEventListener("load", () => {
+                    loader.style.display = "none";
+                });
+            </script>
+
+            <style>         /* PARA QUE EL CARGANDO SALGA EN EL MEDIO*/
+                #loader {
+                    position:absolute;
+                    inset: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            </style> 
+
+            <button id="btnSonido" class="icono-sonido"><img src="imagenes/icon-sonido.png" alt=""></button>
+        </section>
+
+        <!-- LADO DERECHO -->
+        <section class="lado-der">
+           <button class="cerrar"><a href="index.html"><img src="imagenes/icon-close.png" alt=""></a></button></button>
+
+            <div class="info-caja">
+                <h2>Mbopihãra</h2>
+                <ul>
+                    <li> <img src="imagenes/hibridoTerrestre.png" alt="">Híbrido Terrestre Nocturno</li>
+                    <li> <img src="imagenes/hibridoCombinacion.png" alt=""> Combinación genética de Pantera Negra, Erizo de tierra y Carnero</li>
+                    <li> <img src="imagenes/hibridoDieta.png" alt="">Dieta: pequeños roedores, ranas nocturnas, aves pequeñas</li>
+                    <li> <img src="imagenes/hibridoFuncion.png" alt="">Patrulla los bordes del bosque, detecta intrusos y protege zonas sensibles con su camuflaje y espinas.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- SONIDO -->
+    <script>
+        const sonido = new Audio("sonido/mbopihãra.mp3");
+        document.getElementById("btnSonido").addEventListener("click", () => {
+            sonido.currentTime = 0;
+            sonido.play();
+        });
+    </script>
+    <script src="3d.js"></script>
+</body>
+
+</html>
